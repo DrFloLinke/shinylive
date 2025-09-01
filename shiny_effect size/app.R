@@ -334,9 +334,8 @@ server <- function(input, output, session) {
         axis.text  = element_text(size = 14, color = "white"),
         plot.title = element_text(size = 18, face = "bold", color = "white"),
         
-        # grid/axes/ticks to white (use a softer white for grids)
-        panel.grid.major = element_line(linewidth = 0.4, color = scales::alpha("white", 0.55)),
-        panel.grid.minor = element_line(linewidth = 0.25, color = scales::alpha("white", 0.25)),
+        panel.grid.major = element_line(linewidth = 0.1, color = scales::alpha("white", 0.55)),
+        panel.grid.minor = element_blank(),  # ← no minor gridlines
         axis.ticks       = element_line(color = "white")
       )
     
