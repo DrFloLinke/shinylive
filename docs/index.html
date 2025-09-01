@@ -1,3 +1,17 @@
-<!-- docs/index.html -->
 <!doctype html>
-<meta http-equiv="refresh" content="0; url=effect-size/">
+<meta charset="utf-8">
+<title>Redirecting…</title>
+<script>
+(async () => {
+  // Try to unregister any service workers for this origin
+  if ('serviceWorker' in navigator) {
+    try {
+      const regs = await navigator.serviceWorker.getRegistrations();
+      for (const r of regs) { await r.unregister(); }
+    } catch (e) { /* ignore */ }
+  }
+  // Now redirect to your app
+  location.replace('reg_calc/');
+})();
+</script>
+<p>Redirecting to <a href="reg_calc/">reg_calc/</a>…</p>
