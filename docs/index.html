@@ -6,32 +6,9 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <script>
-    (async () => {
-      const targetApp = "correlation/";  // <-- put your app folder here
-
-      // Unregister service workers
-      if ('serviceWorker' in navigator) {
-        try {
-          const regs = await navigator.serviceWorker.getRegistrations();
-          for (const r of regs) { await r.unregister(); }
-        } catch (e) {}
-      }
-
-      // Clear caches
-      if ('caches' in window) {
-        try {
-          const keys = await caches.keys();
-          for (const key of keys) { await caches.delete(key); }
-        } catch (e) {}
-      }
-
-      // Redirect
-      setTimeout(() => location.replace(targetApp), 200);
-    })();
-  </script>
+  <script>location.replace("sd/?bust=" + Date.now());</script>
 </head>
 <body>
-  <p>Redirecting to <a href="correlation/">correlation/</a>…</p>
+  <p>Redirecting to <a href="sd/">sd/</a>…</p>
 </body>
 </html>
