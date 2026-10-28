@@ -18,7 +18,28 @@
     </script>
     <link rel="stylesheet" href="./../shinylive/style-resets.css" />
     <link rel="stylesheet" href="./../shinylive/shinylive.css" />
-    
+    <script>
+(function () {
+  var key = 'sl-retry:' + location.pathname, tries = 0;
+  var t = setInterval(function () {
+    tries++;
+    var f = document.querySelector('#root iframe');
+    try {
+      var txt = f && f.contentDocument && f.contentDocument.body
+                ? f.contentDocument.body.innerText : '';
+      if (/File not found/.test(txt)) {
+        clearInterval(t);
+        var last = +sessionStorage.getItem(key) || 0;
+        if (Date.now() - last > 30000) {
+          sessionStorage.setItem(key, Date.now());
+          location.reload();
+        }
+      }
+    } catch (e) {}
+    if (tries > 20) clearInterval(t);
+  }, 1000);
+})();
+</script>
   </head>
   <body>
     
